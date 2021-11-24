@@ -15,10 +15,12 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article
+
+      redirect_to article_path(@article)
     else
       render :new
     end
+    # @article ->article_path(article)-> these both will redirect to /articles/:id (you can view this order by rails route)
   end
 
   def edit
