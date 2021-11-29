@@ -20,8 +20,6 @@ class ArticlesController < ApplicationController
       render :new
     end
     # @article ->article_path(article)-> these both will redirect to /articles/:id (you can view this order by rails route)
-
-
   end
 
   def edit
