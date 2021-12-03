@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+  # Testing Git
   def index
     @articles = Article.all
   end
