@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+
+  http_basic_authenticate_with name: "mayank", password: "password", except: [:index, :show]
   # Testing Git
   def index
     @articles = Article.all
