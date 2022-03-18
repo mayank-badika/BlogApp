@@ -1,12 +1,27 @@
-<h1><%= @article.title %></h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand"><%= @article.title %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="<%= articles_path%>">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="<%= new_article_path%>">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<% if@article.avatar.attached? %>
+  <image src="<%=(url_for(@article.avatar)) %>" width="50%" height="10%"></image>
+<% end %>
 <p><%= @article.body %></p>
-
-<%= link_to "Edit",edit_article_path(@article) %>
-<%= link_to "Show All Articles",articles_path %>
-<%= link_to "Destroy" ,article_path(@article),method: :delete,data: { confirm: "Are you sure?"} %>
 
 <h2> Comments</h2>
 <%= render @article.comments %>
 
 <h2>Add a comment</h2>
 <%= render "comments/form" %>
+<%= link_to "Edit",edit_article_path(@article),class: "btn btn-primary" %>
+
+<%= link_to "Delete" ,article_path(@article),method: :delete,data: { confirm: "Are you sure?"} ,class: "btn btn-primary"%>
