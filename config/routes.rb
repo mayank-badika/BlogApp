@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :articles do # creating heirarchy with articles to generate routes accordingly
   resources :comments
   end
+  resources :users, except: [:new]
+  get 'signup', to: 'users#new'
 end
