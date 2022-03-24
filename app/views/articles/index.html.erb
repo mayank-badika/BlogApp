@@ -1,2 +1,5 @@
 <%= render 'shared/article', obj: @articles %>
 <%= link_to "New Article", new_article_path,class: "btn btn-primary" %> <!-- new_article_path -> /articles/new (as seen on Rails Routes command) -->
+<div align="center">
+  <%= will_paginate %>
+</div>
