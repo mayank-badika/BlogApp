@@ -6,8 +6,8 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="<%= articles_path%>">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="<%= new_article_path%>">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="<%= users_path%>">Users</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="<%= new_article_path%>">New Article</a></li>
         <% if logged_in? %>
           <li class="nav-item"><%= link_to "Log out", logout_path, method: :delete %></li>
         <% else %>
@@ -23,7 +23,7 @@
   </div>
 <% end %>
 <%= render 'shared/article', obj: @articles %>
-<%= link_to "New Article", new_article_path,class: "btn btn-primary" %> <!-- new_article_path -> /articles/new (as seen on Rails Routes command) -->
+<br>
 <div align="center">
-  <%= will_paginate %>
+  <%= will_paginate @articles ,list_classes: %w(pagination justify-content-center) %>
 </div>
