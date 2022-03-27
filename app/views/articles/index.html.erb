@@ -1,3 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand">Welcome to the Rails Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="<%= articles_path%>">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="<%= new_article_path%>">Blog</a></li>
+        <% if logged_in? %>
+          <li class="nav-item"><%= link_to "Log out", logout_path, method: :delete %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "Log in", login_path, method: :get %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
 <%= render 'shared/article', obj: @articles %>
 <%= link_to "New Article", new_article_path,class: "btn btn-primary" %> <!-- new_article_path -> /articles/new (as seen on Rails Routes command) -->
 <div align="center">
