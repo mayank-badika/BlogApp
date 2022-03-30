@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX }
   before_save { self.email = email.downcase }
   has_secure_password
+  has_one_attached :avatar
 end
